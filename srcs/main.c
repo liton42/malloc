@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2019/03/27 15:55:46 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/28 12:37:03 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_page			*create_list(size_t size, void *ptr, int pos)
 
 t_page			*add_alloc(size_t size, t_page **page)
 {
+	int			align;
 	void		*ptr;
 	t_page		*meta;
 	t_page		*tmp;
@@ -35,8 +36,14 @@ t_page			*add_alloc(size_t size, t_page **page)
 	tmp = *page;
 	while (tmp->next)
 		tmp = tmp->next;
-	ptr = (void*)tmp + META + tmp->size;
-	meta = create_list(size, ptr, tmp->pos + META + size);
+	ptr = (void*)tmp + META + tmp->size;;
+	align = tmp->pos + META + tmp->size;
+	while (align % 16 != 0)
+	{
+		align++;
+		ptr++;
+	}
+	meta = create_list(size, ptr, align);
 	tmp->next = meta;
 	meta->prev = tmp;
 	return (meta + 1);
@@ -68,7 +75,7 @@ t_page				*check_page(size_t size, t_page **page, int type)
 	if (!*page || size > SMALL || check_place(size, page, type) == 0)
 	{
 		ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-		meta = create_list(size, ptr, META + size);
+		meta = create_list(size, ptr, 0);
 		return (add_page(&meta, page));
 	}
 	return (add_alloc(size, page));
@@ -86,7 +93,26 @@ void				*mmalloc(size_t size)
 	return (check_page(size, &g_malloc.large, size));
 }
 
+void		strcopie(char **str, int n, char c)
+{
+	int		i;
+
+	i = 0;
+	while (i < n)
+	{
+		(*str)[i] = c;
+		i++;
+	}
+	(*str)[i] = '\0';
+}
+
 int					main(void)
 {
-	printf("%zu\n", sizeof(t_page));
+	char			*lol;
+	char			*oui;
+
+	lol = (char*)mmalloc(sizeof(char) * 8);
+	oui = (char*)mmalloc(sizeof(char) * 4);
+	strcopie(&oui, 3, 'V');
+	strcopie(&lol, 50, 'K');
 }

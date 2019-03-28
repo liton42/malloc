@@ -22,6 +22,7 @@ HPATH 	= includes/ libft/
 INC		= $(addprefix -I, $(HPATH))
 SRC	=	show_mem.c	\
 		free.c		\
+		realloc.c	\
 		main.c
 # colors
 GRN     =   \033[0;32m
