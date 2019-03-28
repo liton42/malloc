@@ -6,37 +6,29 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 11:14:41 by hakaishin         #+#    #+#             */
-/*   Updated: 2019/03/28 12:16:16 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/28 23:14:07 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-t_page			*search_alloc(void *ptr, size_t size, t_page **page, size_t t)
+t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 {
 	unsigned long	pos;
 	t_page			*tmp;
 
 	tmp = *page;
-	(void)t;
 	while (tmp)
 	{
 		if ((void*)tmp + META == ptr)
 		{
 			if (tmp->size >= size)
-			{
-				printf("111111\n");
 				return (tmp + 1);
-			}
 			pos = tmp->pos + META + (tmp->size - 1) + (size - tmp->size);
 			if (tmp->next != NULL && (int)pos < tmp->next->pos)
-			{
-				printf("222222222\n");
 				return (tmp + 1);
-			}
 			ft_memset(tmp + 1, '.', tmp->size);
 			tmp->size = 0;
-			printf("3333333333333\n");
 			return (mmalloc(size));
 		}
 		tmp = tmp->next;
@@ -48,11 +40,11 @@ t_page			*get_alloc(void *ptr, size_t size)
 {
 	t_page		*tmp;
 
-	if ((tmp = search_alloc(ptr, size, &g_malloc.tiny, TINY)) != NULL)
+	if ((tmp = search_alloc(ptr, size, &g_malloc.tiny)) != NULL)
 		return (tmp);
-	if ((tmp = search_alloc(ptr, size, &g_malloc.small, TINY)) != NULL)
+	if ((tmp = search_alloc(ptr, size, &g_malloc.small)) != NULL)
 		return (tmp);
-	if ((tmp = search_alloc(ptr, size, &g_malloc.large, TINY)) != NULL)
+	if ((tmp = search_alloc(ptr, size, &g_malloc.large)) != NULL)
 		return (tmp);
 	return (ptr);
 }
