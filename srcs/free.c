@@ -6,11 +6,11 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 02:18:36 by hakaishin         #+#    #+#             */
-/*   Updated: 2019/03/27 07:25:22 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/29 09:31:02 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "../includes/malloc.h"
 
 int			check_add(void *ptr, t_page *tmp)
 {
@@ -18,7 +18,8 @@ int			check_add(void *ptr, t_page *tmp)
 	{
 		if ((void*)tmp + META == ptr)
 		{
-			tmp->size = 1;
+			ft_memset(tmp + 1, '.', tmp->size);
+			tmp->size = 0;
 			return (1);
 		}
 		tmp = tmp->next;
@@ -26,7 +27,7 @@ int			check_add(void *ptr, t_page *tmp)
 	return (0);
 }
 
-void			mfree(void *ptr)
+void			free(void *ptr)
 {
 	t_page		*tmp;
 

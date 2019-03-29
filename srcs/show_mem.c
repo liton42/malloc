@@ -6,11 +6,11 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2019/03/22 03:29:45 by liton            ###   ########.fr       */
+/*   Updated: 2019/03/29 09:27:44 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "../includes/malloc.h"
 #include <unistd.h>
 
 void			show_alloc_mem(void)
@@ -69,6 +69,38 @@ int					check_place(size_t size, t_page **page, int type)
 	if (tmp->pos + size + META > (unsigned long)type)
 		return (0);
 	return (1);
+}
+
+t_page				*find_block(size_t size, t_page **page)
+{
+	int				p;
+	t_page			*tmp;
+
+	tmp = *page;
+	while (tmp)
+	{
+		p = tmp->pos + META + size;
+		printf("p = %i\n", p);
+		if (tmp->next == NULL)
+			printf("NULL\n");
+		else
+			printf("tmp->next = %i\n", tmp->next->pos);
+		if (tmp->size == 0 && tmp->next && p < tmp->next->pos)
+		{
+			printf("11111\n");
+			tmp->size = size;
+			return (tmp + 1);
+		}
+		else if (tmp->size == 0 && tmp->next == NULL)
+		{
+			printf("3333\n");
+			tmp->size = size;
+			return (tmp + 1);
+		}
+		tmp = tmp->next;
+	}
+	printf("22222\n");
+	return (NULL);
 }
 
 void	print_memory(const void *addr, size_t size)

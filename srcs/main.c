@@ -6,12 +6,11 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2019/03/28 12:37:03 by liton            ###   ########.fr       */
+/*   Updated: 2019/03/29 18:47:07 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
-#include <unistd.h>
+#include "../includes/malloc.h"
 #include <stdlib.h>
 
 t_page			*create_list(size_t size, void *ptr, int pos)
@@ -70,18 +69,22 @@ t_page				*check_page(size_t size, t_page **page, int type)
 {
 	void			*ptr;
 	t_page			*meta;
+	t_page			*block;
 
 	meta = NULL;
 	if (!*page || size > SMALL || check_place(size, page, type) == 0)
 	{
-		ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
+			return (NULL);
 		meta = create_list(size, ptr, 0);
 		return (add_page(&meta, page));
 	}
+	if ((block = find_block(size, page)) != NULL)
+		return (block);
 	return (add_alloc(size, page));
 }
 
-void				*mmalloc(size_t size)
+void				*malloc(size_t size)
 {
 	initialize_malloc();
 	if (size == 0)
@@ -108,11 +111,16 @@ void		strcopie(char **str, int n, char c)
 
 int					main(void)
 {
+	char			*test;
 	char			*lol;
 	char			*oui;
 
-	lol = (char*)mmalloc(sizeof(char) * 8);
-	oui = (char*)mmalloc(sizeof(char) * 4);
+	lol = (char*)malloc(sizeof(char) * 8);
+	strcopie(&lol, 7, 'K');
+	oui = (char*)malloc(sizeof(char) * 4);
 	strcopie(&oui, 3, 'V');
-	strcopie(&lol, 50, 'K');
+	free(lol);
+	test = (char*)malloc(sizeof(char) * 3);
+	strcopie(&test, 2, 'X');
+	print_memory(g_malloc.tiny, 16 * 20);
 }

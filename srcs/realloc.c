@@ -6,11 +6,11 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 11:14:41 by hakaishin         #+#    #+#             */
-/*   Updated: 2019/03/28 23:14:07 by liton            ###   ########.fr       */
+/*   Updated: 2019/03/29 09:31:21 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "malloc.h"
+#include "../includes/malloc.h"
 
 t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 {
@@ -29,7 +29,7 @@ t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 				return (tmp + 1);
 			ft_memset(tmp + 1, '.', tmp->size);
 			tmp->size = 0;
-			return (mmalloc(size));
+			return (malloc(size));
 		}
 		tmp = tmp->next;
 	}
@@ -56,6 +56,6 @@ void			*realloc(void *ptr, size_t size)
 	if (ptr != NULL && size == 0)
 		return (ptr);
 	if (ptr == NULL)
-		return (mmalloc(size));
+		return (malloc(size));
 	return (get_alloc(ptr, size));	
 }
