@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2019/03/29 18:47:07 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/29 19:53:02 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,7 @@ int					main(void)
 	free(lol);
 	test = (char*)malloc(sizeof(char) * 3);
 	strcopie(&test, 2, 'X');
+	test = realloc(test, 4);
 	print_memory(g_malloc.tiny, 16 * 20);
+	printf("%zu\n", g_malloc.tiny->size);
 }

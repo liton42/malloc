@@ -6,7 +6,7 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 11:14:41 by hakaishin         #+#    #+#             */
-/*   Updated: 2019/03/29 09:31:21 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/29 19:55:20 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 {
+	unsigned long	save;
 	unsigned long	pos;
 	t_page			*tmp;
 
@@ -22,9 +23,11 @@ t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 	{
 		if ((void*)tmp + META == ptr)
 		{
+			save = tmp->size;
+			tmp->size = size;
 			if (tmp->size >= size)
 				return (tmp + 1);
-			pos = tmp->pos + META + (tmp->size - 1) + (size - tmp->size);
+			pos = tmp->pos + META + (save - 1) + (size - save);
 			if (tmp->next != NULL && (int)pos < tmp->next->pos)
 				return (tmp + 1);
 			ft_memset(tmp + 1, '.', tmp->size);

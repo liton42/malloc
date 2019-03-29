@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2019/03/29 09:27:44 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/03/29 19:45:48 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,26 +80,18 @@ t_page				*find_block(size_t size, t_page **page)
 	while (tmp)
 	{
 		p = tmp->pos + META + size;
-		printf("p = %i\n", p);
-		if (tmp->next == NULL)
-			printf("NULL\n");
-		else
-			printf("tmp->next = %i\n", tmp->next->pos);
 		if (tmp->size == 0 && tmp->next && p < tmp->next->pos)
 		{
-			printf("11111\n");
 			tmp->size = size;
 			return (tmp + 1);
 		}
 		else if (tmp->size == 0 && tmp->next == NULL)
 		{
-			printf("3333\n");
 			tmp->size = size;
 			return (tmp + 1);
 		}
 		tmp = tmp->next;
 	}
-	printf("22222\n");
 	return (NULL);
 }
 

@@ -23,7 +23,7 @@ INC		= $(addprefix -I, $(HPATH))
 SRC	=	show_mem.c	\
 		free.c		\
 		realloc.c	\
-		main.c
+		malloc.c
 # colors
 GRN     =   \033[0;32m
 RED     =   \033[0;31m
