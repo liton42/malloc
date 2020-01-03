@@ -6,7 +6,7 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 11:14:41 by hakaishin         #+#    #+#             */
-/*   Updated: 2020/01/03 20:35:47 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 20:47:53 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 			{
 				ft_memset(tmp + 1, 0, tmp->block_size - META);
 				tmp->size = 0;
-				printf("A PARTIR DE LAAAAAAAAAAAAAAAAAAAAa\n");
 				return (malloc(size));
 			}
 		}
