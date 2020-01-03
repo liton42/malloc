@@ -35,7 +35,7 @@ OBJS        = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(OBJDIR) $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) $(FLAGS) -L./$(LIBSRC) -lft -o $(NAME) $(OBJS)
+	@$(CC) -L./$(LIBSRC) -lft -o $(NAME) $(OBJS)
 	@echo "\n${CYN}PROCESSING DONE !${NC}"
 
 $(OBJDIR):

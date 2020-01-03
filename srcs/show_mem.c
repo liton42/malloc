@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 17:37:22 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 20:00:40 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void				separate_block(t_page **page, t_page **new)
 
 	tmp = (*page)->next;
 	(*page)->next = *new;
-	(*new)->prev = *page;
 	(*new)->next = tmp;
-	tmp->prev = *new;
 }
 
 t_page				*find_block(size_t size, t_page **page, int type)
@@ -97,9 +95,12 @@ t_page				*find_block(size_t size, t_page **page, int type)
 		data = META + tmp->size;
 		if (tmp->size == 0 && (size_t)tmp->block_size >= size)
 		{
+			while (size % 16 != 0)
+				size++;
 			tmp->size = size;
 			return (tmp + 1);
 		}
+
 		else if (tmp->size < tmp->block_size && tmp->block_size - data >= META + size)
 		{
 			ptr = (void*)tmp + META + tmp->size;
@@ -109,12 +110,11 @@ t_page				*find_block(size_t size, t_page **page, int type)
 				p++;
 				ptr++;
 			}
-			if (p + META + size >= (unsigned long)tmp->next->pos)
+			if (tmp->next && p + META + size > (unsigned long)tmp->next->pos)
 				break ;
-			new = create_list(size, ptr, p, tmp->block_size - tmp->size - META);
+			new = create_list(size, ptr, p);
+			new->block_size = tmp->block_size - (tmp->size + META);
 			tmp->block_size = tmp->size + META;
-			while (tmp->block_size % 16 != 0)
-				tmp->block_size++;
 			separate_block(&tmp, &new);
 			return (new + 1);
 		}
