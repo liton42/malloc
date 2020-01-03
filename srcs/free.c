@@ -6,7 +6,7 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 02:18:36 by hakaishin         #+#    #+#             */
-/*   Updated: 2019/03/29 09:31:02 by hakaishin        ###   ########.fr       */
+/*   Updated: 2019/12/30 14:34:00 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			check_add(void *ptr, t_page *tmp)
 	{
 		if ((void*)tmp + META == ptr)
 		{
-			ft_memset(tmp + 1, '.', tmp->size);
+			ft_memset(tmp + 1, 0, tmp->size);
 			tmp->size = 0;
 			return (1);
 		}

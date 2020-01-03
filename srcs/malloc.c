@@ -6,14 +6,14 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2019/03/29 19:53:02 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 17:48:05 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/malloc.h"
 #include <stdlib.h>
 
-t_page			*create_list(size_t size, void *ptr, int pos)
+t_page			*create_list(size_t size, void *ptr, int pos, size_t block_size)
 {
 	t_page		*new;
 
@@ -21,6 +21,9 @@ t_page			*create_list(size_t size, void *ptr, int pos)
 	new->next = NULL;
 	new->prev = NULL;
 	new->size = size;
+	while (block_size % 16 != 0)
+		block_size++;
+	new->block_size = block_size;
 	new->pos = pos;
 	return (new);
 }
@@ -35,14 +38,14 @@ t_page			*add_alloc(size_t size, t_page **page)
 	tmp = *page;
 	while (tmp->next)
 		tmp = tmp->next;
-	ptr = (void*)tmp + META + tmp->size;;
+	ptr = (void*)tmp + META + tmp->size;
 	align = tmp->pos + META + tmp->size;
 	while (align % 16 != 0)
 	{
 		align++;
 		ptr++;
 	}
-	meta = create_list(size, ptr, align);
+	meta = create_list(size, ptr, align, size + META);
 	tmp->next = meta;
 	meta->prev = tmp;
 	return (meta + 1);
@@ -76,10 +79,10 @@ t_page				*check_page(size_t size, t_page **page, int type)
 	{
 		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
 			return (NULL);
-		meta = create_list(size, ptr, 0);
+		meta = create_list(size, ptr, 0, size + META);
 		return (add_page(&meta, page));
 	}
-	if ((block = find_block(size, page)) != NULL)
+	if ((block = find_block(size, page, type)) != NULL)
 		return (block);
 	return (add_alloc(size, page));
 }
@@ -111,18 +114,31 @@ void		strcopie(char **str, int n, char c)
 
 int					main(void)
 {
-	char			*test;
-	char			*lol;
-	char			*oui;
+	char			*ue;
+	char			*re;
+	char			*te;
+	char			*ve;
+	char			*ze;
+	char			*he;
 
-	lol = (char*)malloc(sizeof(char) * 8);
-	strcopie(&lol, 7, 'K');
-	oui = (char*)malloc(sizeof(char) * 4);
-	strcopie(&oui, 3, 'V');
-	free(lol);
-	test = (char*)malloc(sizeof(char) * 3);
-	strcopie(&test, 2, 'X');
-	test = realloc(test, 4);
-	print_memory(g_malloc.tiny, 16 * 20);
-	printf("%zu\n", g_malloc.tiny->size);
+	printf("size = %zu\n", sizeof(t_page));
+	re = (char*)malloc(sizeof(char) * 15);
+	te = (char*)malloc(sizeof(char) * 250);
+	ve = (char*)malloc(sizeof(char) * 30);
+	strcopie(&re, 14, 'c');
+	strcopie(&te, 249, 'V');
+	strcopie(&ve, 29, 'N');
+	print_memory(g_malloc.tiny, 16 * 60);
+	free(te);
+	show_alloc_mem();
+	print_memory(g_malloc.tiny, 16 * 60);
+	ze = (char*)malloc(sizeof(char) * 15);
+	strcopie(&ze, 14, 'O');
+	print_memory(g_malloc.tiny, 16 * 60);
+	ue = (char*)malloc(sizeof(char) * 15);
+	strcopie(&ue, 14, 'X');
+	he = (char*)malloc(sizeof(char) * 15);
+	strcopie(&he, 14, 'S');
+	print_memory(g_malloc.tiny, 16 * 60);
+printf("%zu\n", sizeof(t_test)); 
 }

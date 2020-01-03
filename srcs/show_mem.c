@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2019/03/29 19:45:48 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 17:37:22 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,52 @@ int					check_place(size_t size, t_page **page, int type)
 	return (1);
 }
 
-t_page				*find_block(size_t size, t_page **page)
+void				separate_block(t_page **page, t_page **new)
+{
+	t_page 			*tmp;
+
+	tmp = (*page)->next;
+	(*page)->next = *new;
+	(*new)->prev = *page;
+	(*new)->next = tmp;
+	tmp->prev = *new;
+}
+
+t_page				*find_block(size_t size, t_page **page, int type)
 {
 	int				p;
+	void			*ptr;
+	int				data;
 	t_page			*tmp;
+	t_page			*new;
 
 	tmp = *page;
+	(void)type;
 	while (tmp)
 	{
-		p = tmp->pos + META + size;
-		if (tmp->size == 0 && tmp->next && p < tmp->next->pos)
+		data = META + tmp->size;
+		if (tmp->size == 0 && (size_t)tmp->block_size >= size)
 		{
 			tmp->size = size;
 			return (tmp + 1);
 		}
-		else if (tmp->size == 0 && tmp->next == NULL)
+		else if (tmp->size < tmp->block_size && tmp->block_size - data >= META + size)
 		{
-			tmp->size = size;
-			return (tmp + 1);
+			ptr = (void*)tmp + META + tmp->size;
+			p = tmp->pos + META + tmp->size;
+			while (p % 16 != 0)
+			{
+				p++;
+				ptr++;
+			}
+			if (p + META + size >= (unsigned long)tmp->next->pos)
+				break ;
+			new = create_list(size, ptr, p, tmp->block_size - tmp->size - META);
+			tmp->block_size = tmp->size + META;
+			while (tmp->block_size % 16 != 0)
+				tmp->block_size++;
+			separate_block(&tmp, &new);
+			return (new + 1);
 		}
 		tmp = tmp->next;
 	}
