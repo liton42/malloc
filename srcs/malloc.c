@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:11:55 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 20:39:57 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,16 @@ t_page				*check_page(size_t size, t_page **page, int type)
 	meta = NULL;
 	if (!*page || size > SMALL || check_place(size, page, type) == 0)
 	{
+		printf("111111111111111111\n");
 		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
 			return (NULL);
 		meta = create_list(size, ptr, 0);
 		return (add_page(&meta, page));
 	}
-	if ((block = find_block(size, page, type)) != NULL)
+	printf("22222222222222\n");
+	if ((block = find_block(size, page)) != NULL)
 		return (block);
+	printf("3333333333\n");
 	return (add_alloc(size, page));
 }
 
@@ -141,6 +144,8 @@ int					main(void)
 	strcopie(&u, 29, 'G');
 	l = (char*)malloc(sizeof(char) * 16);
 	strcopie(&l, 15, 'A');
+	u = (char*)realloc(u, sizeof(char)* 33);
+	strcopie(&u, 32, 'G');
 	print_memory(g_malloc.tiny, 16 * 60);
 	while (g_malloc.tiny)
 	{

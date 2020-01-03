@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:55:41 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:00:51 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 20:13:43 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void					free(void *ptr);
 void					*realloc(void *ptr, size_t size);
 void					*malloc(size_t size);
 t_page					*create_list(size_t size, void *ptr, int pos);
-t_page					*find_block(size_t size, t_page **page, int type);
+t_page					*find_block(size_t size, t_page **page);
 t_malloc				g_malloc;
 #endif

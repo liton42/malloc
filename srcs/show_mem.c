@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:00:40 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/03 20:39:00 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void				separate_block(t_page **page, t_page **new)
 	(*new)->next = tmp;
 }
 
-t_page				*find_block(size_t size, t_page **page, int type)
+t_page				*find_block(size_t size, t_page **page)
 {
 	int				p;
 	void			*ptr;
@@ -89,18 +89,16 @@ t_page				*find_block(size_t size, t_page **page, int type)
 	t_page			*new;
 
 	tmp = *page;
-	(void)type;
 	while (tmp)
 	{
 		data = META + tmp->size;
-		if (tmp->size == 0 && (size_t)tmp->block_size >= size)
+		if (tmp->size == 0 && tmp->block_size - META >= size)
 		{
 			while (size % 16 != 0)
 				size++;
 			tmp->size = size;
 			return (tmp + 1);
 		}
-
 		else if (tmp->size < tmp->block_size && tmp->block_size - data >= META + size)
 		{
 			ptr = (void*)tmp + META + tmp->size;
