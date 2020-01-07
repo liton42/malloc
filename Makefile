@@ -3,67 +3,76 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: liton <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: zadrien <zadrien@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/08/14 20:24:52 by liton             #+#    #+#              #
-#*   Updated: 2017/09/06 04:50:35 by liton            ###   ########.fr       *#
+#    Created: 2017/05/02 18:16:06 by zadrien           #+#    #+#              #
+#    Updated: 2020/01/07 15:10:32 by zadrien          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = 	malloc.so
-CC      = 	gcc
-FLAGS   = 	-Wall -Wextra -Werror -shared
-LIB     = 	libft/libft.a
-HEADER  = 	includes/
-LIBSRC  = 	libft/
-SRCDIR  = 	srcs/
-OBJDIR  = 	objs/
-HPATH 	= includes/ libft/
-INC		= $(addprefix -I, $(HPATH))
-SRC	=	show_mem.c	\
-		free.c		\
-		realloc.c	\
-		calloc.c    \
-		malloc.c
-# colors
-GRN     =   \033[0;32m
-RED     =   \033[0;31m
-CYN     =   \033[0;36m
-NC      =   \033[0m
-SRCS        = $(addprefix $(SRCDIR), $(SRC))
-OBJS        = $(addprefix $(OBJDIR), $(SRC:.c=.o))
+.PHONY: all clean fclean name re
 
-all: $(OBJDIR) $(NAME)
+CC= gcc
+SNAME= malloc
+LIBNAME = libft_malloc
+CFLAGS= #-g -Wall -Werror -Wextra
+CPATH= srcs/
+OPATH= obj/
+HPATH= includes/ libft/
+INC= $(addprefix -I , $(HPATH))
+SFILES= calloc.c \
+		free.c \
+		malloc.c \
+		realloc.c \
+		show_mem.c \
 
-$(NAME): $(LIB) $(OBJS)
-	@$(CC) -L./$(LIBSRC) $(FLAGS) -lft -o $(NAME) $(OBJS)
-	@echo "\n${CYN}PROCESSING DONE !${NC}"
+OSFILES= $(SFILES:.c=.o)
 
-$(OBJDIR):
-	@mkdir -p objs
+ifeq ($(HOSTTYPE),) # search for hosttype env variabl
+	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
+endif
 
-$(LIB):
-	@echo "${CYN}Processing ${NC}./libft/objs ${CYN}[${NC}...${CYN}]${NC}"
-	@make -C $(LIBSRC)
-	@echo "\n${CYN}Processing ${NC}./objs ${CYN}[${NC}...${CYN}]${NC}"
 
-$(OBJDIR)%.o: $(SRCDIR)%.c $(HEADER)$(NAME).h
-	@echo "${GRN}Compiling${NC} $@"
-	@$(CC) $(FLAGS) $(INC) $< -c -o $@
+LIBFILES = calloc.c \
+		free.c \
+		malloc.c \
+		realloc.c \
+		show_mem.c \
+
+OLIBFILES = $(LIBFILES:.c=.o)
+LIBOBJ = $(addprefix $(OPATH), $(OLIBFILES))
+
+
+HFILES= includes/malloc.h \
+		libft/libft.h	\
+
+SOBJ= $(addprefix $(OPATH), $(OSFILES))
+
+all: $(LIBNAME)
+
+$(LIBNAME): $(LIBOBJ)
+	make -C libft
+	$(CC) $(CFLAGS) libft/libft.a $(LIBOBJ) -shared -o $(LIBNAME)_$(HOSTTYPE).so
+	ln -s $(LIBNAME)_$(HOSTTYPE).so $(LIBNAME).so
+
+$(OPATH)%.o: $(CPATH)%.c $(HFILES)
+	@mkdir -p $(OPATH)
+	$(CC) $(CFLAGS) $(INC) $< -c -o $@
 
 clean:
-	@echo "${RED}Cleaning ${NC}./objs/ ${RED}[${NC}...${RED}]${NC}"
-	@rm -rf $(OBJS)
-	@echo "${RED}Cleaning ${NC}./libft/objs/ ${RED}[${NC}...${RED}]${NC}"
-	@make -C $(LIBSRC) clean
+	make -C libft clean
+	rm -rf $(SOBJ)
+
 
 fclean: clean
-	@echo "${RED}Cleaning ${NC}./${RED}ft_ls${NC}"
-	@rm -Rf $(NAME)
-	@echo "${RED}Cleaning ${NC}./libft/${RED}libft.h${NC}\n"
-	@make -C $(LIBSRC) fclean
-	@echo "${RED}DELET DONE !${NC}"
+	make -C libft fclean
+	rm -rf $(SNAME)
+	rm -rf $(OPATH)
+	rm -rf $(LIBNAME)_$(HOSTTYPE).so
+	rm -rf $(LIBNAME).so
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norme:
+		@norminette srcs/**/**.[ch]
+		@norminette libft/*.[ch]
