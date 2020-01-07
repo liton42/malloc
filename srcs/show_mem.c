@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/07 14:16:21 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 16:32:57 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int					check_place(size_t size, t_page **page, int type)
 	tmp = *page;
 	while (tmp->next)
 		tmp = tmp->next;
-	if (tmp->pos + size + META > (unsigned long)type)
+	if (tmp->pos + tmp->block_size + size + META >= (unsigned long)type)
 		return (0);
 	return (1);
 }

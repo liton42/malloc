@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = 	malloc.so
+NAME    = 	malloc
 CC      = 	gcc
-FLAGS   = 	-Wall -Wextra -Werror -shared
+FLAGS   = 	-Wall -Wextra -Werror
 LIB     = 	libft/libft.a
 HEADER  = 	includes/
 LIBSRC  = 	libft/

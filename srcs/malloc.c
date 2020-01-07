@@ -6,12 +6,11 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/01/07 14:58:08 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 16:31:05 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/malloc.h"
-#include <stdlib.h>
 
 t_malloc g_malloc = {NULL, NULL, NULL};
 
@@ -67,22 +66,22 @@ t_page				*add_page(t_page **meta, t_page **page)
 	return (*meta + 1);
 }
 
-t_page				*check_page(size_t size, t_page **page, int type)
+t_page				*check_page(size_t size, t_page **page, size_t type)
 {
 	void			*ptr;
 	t_page			*meta;
 	t_page			*block;
 
 	meta = NULL;
-	if (!*page || size > SMALL || check_place(size, page, type) == 0)
+	if (page && (block = find_block(size, page)) != NULL)
+		return (block);
+	if (!*page || size > type || check_place(size, page, type) == 0)
 	{
 		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
 			return (NULL);
 		meta = create_list(size, ptr, 0);
 		return (add_page(&meta, page));
 	}
-	if ((block = find_block(size, page)) != NULL)
-		return (block);
 	return (add_alloc(size, page));
 }
 
@@ -112,38 +111,29 @@ void		strcopie(char **str, int n, char c)
 
 int					main(void)
 {
-	char			*re;
-	char			*te;
-	char			*ve;
-	char			*ze;
-	char			*ce;
-	char			*t;
-	char			*u;
-	char			*l;
+	char		*t;
+	char		*v;
+	char		*o;
+	char		*u;
+	char		*z;
+	char		*b;
+	char		*e;
 
-	re = (char*)malloc(sizeof(char) * 15);
-	te = (char*)malloc(sizeof(char) * 250);
-ve = (char*)malloc(sizeof(char) * 30);
-	strcopie(&re, 14, 'c');
-	strcopie(&te, 249, 'V');
-	strcopie(&ve, 29, 'N');
-	print_memory(g_malloc.tiny, 16 * 60);
-	free(te);
-	show_alloc_mem();
-	print_memory(g_malloc.tiny, 16 * 60);
-	printf("--------------------\n");
-	ze = (char*)malloc(sizeof(char) * 15);
-	strcopie(&ze, 14, 'O');
-	ce = (char*)malloc(sizeof(char) * 48);
-	strcopie(&ce, 47, 'Z');
-	t = (char*)malloc(sizeof(char) * 15);
-	strcopie(&t, 14, 'R');
-	u = (char*)malloc(sizeof(char) * 30);
-	strcopie(&u, 29, 'G');
-	l = (char*)malloc(sizeof(char) * 16);
-	strcopie(&l, 15, 'A');
-	u = (char*)realloc(u, sizeof(char)* 33);
-	strcopie(&u, 32, 'G');
+	t = (char*)malloc(sizeof(char) * 5);
+	strcopie(&t, 4, 'C');
+	v = (char*)malloc(sizeof(char) * 16);
+	strcopie(&v, 15, 'D');
+	o = (char*)malloc(sizeof(char) * 253);
+	strcopie(&o, 252, 'E');
+	u= (char*)malloc(sizeof(char) * 253);
+	strcopie(&u, 252, 'F');
+	free(o);
+	z= (char*)malloc(sizeof(char) * 13);
+	strcopie(&z, 12, 'R');
+	b= (char*)malloc(sizeof(char) * 19);
+	strcopie(&b, 18, 'W');
+	e= (char*)malloc(sizeof(char) * 120);
+	strcopie(&e, 119, 'U');
 	print_memory(g_malloc.tiny, 16 * 60);
 	while (g_malloc.tiny)
 	{
