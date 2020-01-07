@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/01/07 16:31:05 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 16:59:36 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ t_page			*create_list(size_t size, void *ptr, int pos)
 
 	new = (t_page*)ptr;
 	new->next = NULL;
-	while (size % 16 != 0)
-		size++;
 	new->size = size;
 	new->block_size = size + META;
 	new->pos = pos;
@@ -40,11 +38,6 @@ t_page			*add_alloc(size_t size, t_page **page)
 		tmp = tmp->next;
 	ptr = (void*)tmp + META + tmp->size;;
 	align = tmp->pos + META + tmp->size;
-	while (align % 16 != 0)
-	{
-		align++;
-		ptr++;
-	}
 	meta = create_list(size, ptr, align);
 	tmp->next = meta;
 	return (meta + 1);
@@ -89,6 +82,8 @@ void				*malloc(size_t size)
 {
 	if (size == 0)
 		return (NULL);
+	while (size % 16 != 0)
+		size++;
 	if (size <= TINY)
 		return (check_page(size, &g_malloc.tiny, TINY_PAGE));
 	else if (size <= SMALL)

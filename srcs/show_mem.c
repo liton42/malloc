@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/07 16:32:57 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 16:56:20 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ t_page				*find_block(size_t size, t_page **page)
 		data = META + tmp->size;
 		if (tmp->size == 0 && tmp->block_size - META >= size)
 		{
-			while (size % 16 != 0)
-				size++;
 			tmp->size = size;
 			return (tmp + 1);
 		}
@@ -90,11 +88,6 @@ t_page				*find_block(size_t size, t_page **page)
 		{
 			ptr = (void*)tmp + META + tmp->size;
 			p = tmp->pos + META + tmp->size;
-			while (p % 16 != 0)
-			{
-				p++;
-				ptr++;
-			}
 			if (tmp->next && p + META + size > (unsigned long)tmp->next->pos)
 				break ;
 			new = create_list(size, ptr, p);
