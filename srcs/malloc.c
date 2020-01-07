@@ -6,12 +6,14 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:47:45 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 14:37:16 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/malloc.h"
 #include <stdlib.h>
+
+t_malloc g_malloc = {NULL, NULL, NULL};
 
 t_page			*create_list(size_t size, void *ptr, int pos)
 {
@@ -86,7 +88,6 @@ t_page				*check_page(size_t size, t_page **page, int type)
 
 void				*malloc(size_t size)
 {
-	initialize_malloc();
 	if (size == 0)
 		return (NULL);
 	if (size <= TINY)
@@ -122,7 +123,7 @@ int					main(void)
 
 	re = (char*)malloc(sizeof(char) * 15);
 	te = (char*)malloc(sizeof(char) * 250);
-	ve = (char*)malloc(sizeof(char) * 30);
+ve = (char*)malloc(sizeof(char) * 30);
 	strcopie(&re, 14, 'c');
 	strcopie(&te, 249, 'V');
 	strcopie(&ve, 29, 'N');

@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:55:41 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:13:43 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 14:16:33 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef	struct			s_malloc
 }						t_malloc;
 
 void					show_alloc_mem(void);
-void					initialize_malloc(void);
 int						check_place(size_t size, t_page **page, int type);
 void					print_memory(const void *addr, size_t size);
 void					free(void *ptr);
@@ -49,5 +48,6 @@ void					*realloc(void *ptr, size_t size);
 void					*malloc(size_t size);
 t_page					*create_list(size_t size, void *ptr, int pos);
 t_page					*find_block(size_t size, t_page **page);
-t_malloc				g_malloc;
+void					*calloc(size_t count, size_t size);
+extern t_malloc			g_malloc;
 #endif

@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = 	malloc
+NAME    = 	malloc.so
 CC      = 	gcc
-FLAGS   = 	-Wall -Wextra -Werror
+FLAGS   = 	-Wall -Wextra -Werror -shared
 LIB     = 	libft/libft.a
 HEADER  = 	includes/
 LIBSRC  = 	libft/
@@ -23,6 +23,7 @@ INC		= $(addprefix -I, $(HPATH))
 SRC	=	show_mem.c	\
 		free.c		\
 		realloc.c	\
+		calloc.c    \
 		malloc.c
 # colors
 GRN     =   \033[0;32m
@@ -35,7 +36,7 @@ OBJS        = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 all: $(OBJDIR) $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) -L./$(LIBSRC) -lft -o $(NAME) $(OBJS)
+	@$(CC) -L./$(LIBSRC) $(FLAGS) -lft -o $(NAME) $(OBJS)
 	@echo "\n${CYN}PROCESSING DONE !${NC}"
 
 $(OBJDIR):

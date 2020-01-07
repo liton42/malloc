@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/03 20:39:00 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/01/07 14:16:21 by hakaishin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,6 @@ void			show_alloc_mem(void)
 		tmp = (void*)large + META + large->size;
 		printf("%p - %p : %zu octets\n", large + 1, tmp, large->size);
 		large = large->next;
-	}
-}
-
-void				initialize_malloc(void)
-{
-	static int		bol = 0;
-
-	if (bol == 0)
-	{
-		g_malloc.tiny = NULL;
-		g_malloc.small = NULL;
-		g_malloc.large = NULL;
-		bol++;
 	}
 }
 
