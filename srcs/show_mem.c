@@ -6,7 +6,7 @@
 /*   By: liton <liton@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 02:10:16 by liton             #+#    #+#             */
-/*   Updated: 2020/01/07 14:16:21 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/02/13 16:06:49 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 void			show_alloc_mem(void)
 {
 	void		*tmp;
-	t_page 		*tiny;
+//	t_page 		*tiny;
 	t_page		*small;
 	t_page		*large;
 
+	/*
 	tiny = g_malloc.tiny;
 	printf("TINY : %p\n", tiny);
 	while (tiny)
@@ -28,11 +29,13 @@ void			show_alloc_mem(void)
 		printf("%p - %p : %zu octets\n", tiny + 1, tmp, tiny->size);
 		tiny = tiny->next;
 	}
+	*/
 	small = g_malloc.small;
 	printf("SMALL : %p\n", small);
 	while (small)
 	{
-		tmp = (void*)small + META + small->size;
+		if (small->next)
+		tmp = (void*)small + small->block_size;
 		printf("%p - %p : %zu octets\n", small + 1, tmp, small->size);
 		small = small->next;
 	}
@@ -40,7 +43,8 @@ void			show_alloc_mem(void)
 	printf("LARGE : %p\n", large);
 	while (large)
 	{
-		tmp = (void*)large + META + large->size;
+		if (large->next)
+			tmp = (void*)large + large->block_size;
 		printf("%p - %p : %zu octets\n", large + 1, tmp, large->size);
 		large = large->next;
 	}
@@ -53,10 +57,11 @@ int					check_place(size_t size, t_page **page, int type)
 	tmp = *page;
 	while (tmp->next)
 		tmp = tmp->next;
-	if (tmp->pos + size + META > (unsigned long)type)
+	if (tmp->pos + tmp->block_size + size + META> (unsigned long)type)
 		return (0);
 	return (1);
 }
+/*
 
 void				separate_block(t_page **page, t_page **new)
 {
@@ -81,33 +86,45 @@ t_page				*find_block(size_t size, t_page **page)
 		data = META + tmp->size;
 		if (tmp->size == 0 && tmp->block_size - META >= size)
 		{
-			while (size % 16 != 0)
-				size++;
 			tmp->size = size;
+			ft_putstr("block find\n");
 			return (tmp + 1);
 		}
 		else if (tmp->size < tmp->block_size && tmp->block_size - data >= META + size)
 		{
-			ptr = (void*)tmp + META + tmp->size;
-			p = tmp->pos + META + tmp->size;
-			while (p % 16 != 0)
-			{
-				p++;
-				ptr++;
-			}
+			ptr = (void*)tmp + tmp->block_size;;
+			p = tmp->pos + tmp->block_size;
 			if (tmp->next && p + META + size > (unsigned long)tmp->next->pos)
 				break ;
 			new = create_list(size, ptr, p);
 			new->block_size = tmp->block_size - (tmp->size + META);
 			tmp->block_size = tmp->size + META;
 			separate_block(&tmp, &new);
+			ft_putstr("block find\n");
 			return (new + 1);
+		}
+		tmp = tmp->next;
+	}
+	ft_putstr("block_not_find\n");
+	return (NULL);
+}
+*/
+t_page		*find_block(size_t size, t_page **page)
+{
+	t_page		*tmp;
+
+	tmp = *page;
+	while (tmp)
+	{
+		if (tmp->size == 0 && tmp->block_size >= size + META)
+		{
+			tmp->size = size;
+			return (tmp + 1);
 		}
 		tmp = tmp->next;
 	}
 	return (NULL);
 }
-
 void	print_memory(const void *addr, size_t size)
 {
 	if (addr == NULL)

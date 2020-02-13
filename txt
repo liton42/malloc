@@ -1,0 +1,1321 @@
+size : 736
+new_map
+size add aloc = 736
+size : 32
+new_map
+size add aloc = 32
+size : 32
+size add aloc = 32
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 256
+size add aloc = 256
+add_alloc
+REALLOC_MALLOC 256
+size : 768
+size add aloc = 768
+add_alloc
+FREEE 768
+BEGIN` FREE
+size : 4096
+new_map
+size add aloc = 4128
+END FREE
+size : 256
+FREEE 256
+BEGIN` FREE
+END FREE
+size : 256
+REALLOC_MALLOC 256
+size : 768
+FREEE 768
+BEGIN` FREE
+END FREE
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 192
+size add aloc = 192
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 272
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 80
+size add aloc = 80
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 192
+size add aloc = 192
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 128
+size add aloc = 128
+add_alloc
+size : 256
+FREEE 256
+BEGIN` FREE
+END FREE
+size : 4096
+new_map
+size add aloc = 4128
+size : 2160
+new_map
+size add aloc = 2192
+FREEE 4128
+BEGIN` FREE
+END FREE
+size : 3312
+size : 4096
+new_map
+size add aloc = 4128
+REALLOC_MALLOC 3344
+size : 103296
+new_map
+size add aloc = 103328
+FREEE 4128
+BEGIN` FREE
+END FREE
+size : 80
+size add aloc = 80
+add_alloc
+size : 1280
+size add aloc = 1280
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+FREEE 272
+BEGIN` FREE
+END FREE
+size : 32768
+new_map
+size add aloc = 32800
+size : 272
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 288
+size add aloc = 288
+add_alloc
+size : 304
+size add aloc = 304
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+size : 272
+size add aloc = 272
+add_alloc
+FREEE 32800
+BEGIN` FREE
+END FREE
+size : 416
+size add aloc = 416
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 448
+size add aloc = 448
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 4320
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 2048
+size : 16
+size add aloc = 16
+add_alloc
+size : 2048
+size : 192
+size add aloc = 192
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 176
+size add aloc = 176
+add_alloc
+size : 384
+size add aloc = 384
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 176
+size add aloc = 176
+add_alloc
+size : 80
+size add aloc = 80
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 80
+size add aloc = 80
+add_alloc
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+size : 48
+size add aloc = 48
+add_alloc
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 16
+size : 16
+size : 192
+size add aloc = 192
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+size : 80
+FREEE 384
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 80
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+size : 80
+size add aloc = 80
+add_alloc
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+size : 80
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+size : 80
+size add aloc = 80
+add_alloc
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+size : 80
+size add aloc = 80
+add_alloc
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+size : 64
+size : 32
+size : 112
+size add aloc = 112
+add_alloc
+size : 32
+size : 64
+size : 32
+size : 112
+size add aloc = 112
+add_alloc
+size : 32
+size : 64
+size : 32
+size : 112
+size add aloc = 112
+add_alloc
+size : 32
+size : 64
+size : 32
+size : 112
+size add aloc = 112
+add_alloc
+size : 32
+size : 16
+size : 16
+size : 80
+size add aloc = 80
+add_alloc
+size : 192
+size add aloc = 192
+add_alloc
+size : 48
+size : 48
+size : 32
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size : 48
+size add aloc = 48
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 32
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 64
+size add aloc = 64
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 176
+size add aloc = 176
+add_alloc
+size : 384
+size : 16
+size : 16
+size : 176
+size add aloc = 176
+add_alloc
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 16
+size : 16
+size : 192
+size add aloc = 192
+add_alloc
+size : 64
+size : 48
+size add aloc = 48
+add_alloc
+size : 32
+size add aloc = 32
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 384
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+size : 96
+size : 192
+size : 48
+size : 48
+size : 32
+size : 64
+size : 16
+size : 48
+size : 48
+size : 32
+size : 64
+size : 48
+size : 64
+size : 48
+size : 64
+size : 48
+size : 176
+size : 368
+size : 16
+size : 16
+size : 176
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 16
+size : 16
+size : 192
+size add aloc = 192
+add_alloc
+size : 64
+size : 48
+size : 32
+size : 48
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 368
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+size : 64
+size : 32
+size : 112
+size : 32
+size : 592
+size add aloc = 592
+add_alloc
+size : 16
+size : 16
+size : 16
+FREEE 16
+BEGIN` FREE
+END FREE
+size : 80
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 592
+BEGIN` FREE
+END FREE
+size : 80
+size : 80
+size : 192
+size add aloc = 192
+add_alloc
+size : 32
+size : 48
+size : 16
+size : 48
+size : 64
+size : 32
+size : 64
+size : 144
+size add aloc = 144
+add_alloc
+FREEE 144
+BEGIN` FREE
+END FREE
+size : 176
+size add aloc = 176
+add_alloc
+size : 208
+size add aloc = 208
+add_alloc
+size : 352
+FREEE 208
+BEGIN` FREE
+END FREE
+size : 96
+size : 176
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 192
+size add aloc = 192
+add_alloc
+size : 48
+size : 16
+size : 16
+size : 48
+size : 16
+size : 32
+size : 16
+size : 32
+size : 16
+size : 32
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 48
+size add aloc = 48
+add_alloc
+size : 16
+size add aloc = 16
+add_alloc
+size : 176
+size add aloc = 176
+add_alloc
+FREEE 352
+BEGIN` FREE
+END FREE
+FREEE 96
+BEGIN` FREE
+END FREE
+FREEE 176
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 32
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 16
+BEGIN` FREE
+END FREE
+FREEE 48
+BEGIN` FREE
+END FREE
+FREEE 64
+BEGIN` FREE
+END FREE
+FREEE 192
+BEGIN` FREE
+END FREE
+size : 144
+size : 1024
+size add aloc = 1024
+add_alloc
+FREEE 80
+BEGIN` FREE
+END FREE
+size : 32
+size : 16
+size : 16
+size : 16
+size : 80
+size : 192
+size : 32
+size : 48
+size : 16
+size : 48
+size : 64
+size : 32
+size : 64
+size : 176
+size : 208
+size add aloc = 208
+add_alloc
+size : 240
+size add aloc = 240
+add_alloc
+FREEE 208
+BEGIN` FREE
+END FREE
+size : 96
+size : 176
+FREEE 176
+BEGIN` FREE
+END FREE
+size : 192
+size : 32
+size : 16
+size : 16
+size : 48
+size : 16
+size : 32
+size : 16
+size : 16
+size : 48
+size : 16
+size : 48
+size : 16
+size : 48
+size : 80
+size add aloc = 80
+add_alloc
+size : 272
+FREEE 80
+BEGIN` FREE
+END FREE
+size : 96
+size add aloc = 96
+add_alloc
+size : 64
+FREEE 64
+BEGIN` FREE
+END FREE
