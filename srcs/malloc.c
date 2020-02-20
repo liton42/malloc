@@ -6,14 +6,16 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/02/13 16:19:46 by liton            ###   ########.fr       */
+/*   Updated: 2020/02/20 16:55:13 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/malloc.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 t_malloc g_malloc = {NULL, NULL, NULL};
+pthread_mutex_t		g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 t_page			*create_list(size_t size, void *ptr, int pos, int page)
 {
@@ -21,9 +23,6 @@ t_page			*create_list(size_t size, void *ptr, int pos, int page)
 
 	new = (t_page*)ptr;
 	new->next = NULL;
-	ft_putstr("size add aloc = ");
-	ft_putnbr(size);
-	ft_putchar('\n');
 	new->size = size;
 	new->page = page;
 	new->block_size = size + META;
@@ -45,7 +44,7 @@ t_page			*add_alloc(size_t size, t_page **page)
 	align = tmp->pos + tmp->block_size;
 	meta = create_list(size, ptr, align, tmp->page);
 	tmp->next = meta;
-	ft_putstr("add_alloc\n");
+//	ft_putendl("ADD ALLOC");
 	return (meta + 1);
 }
 
@@ -89,7 +88,7 @@ t_page				*check_page(size_t size, t_page **page, size_t type)
 		return (block);
 	if (!*page || size > SMALL || check_place(size, page, type) == 0)
 	{
-		ft_putstr("new_map\n");
+//		ft_putendl("NEW_MAPPPPP");
 		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
 			return (NULL);
 		p = check(page);
@@ -101,43 +100,43 @@ t_page				*check_page(size_t size, t_page **page, size_t type)
 
 void				*malloc(size_t size)
 {
-	t_page		*tmp;
+	int			t;
+	void		*tmp;
 
-	if ((int)size < 0)
-	{
-		ft_putstr("SIZE == 0\n");
-//		return (mmap(0, 0, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0));
+	if (size < 0)
 		return (NULL);
-	}
+	if (size == 0)
+		size = 16;
 	while (size % 16 != 0)
 		size++;
-	ft_putstr("size : ");
-	ft_putnbr(size);
-	ft_putchar('\n');
+//	ft_putstr("size = ");
+//	ft_putnbr(size);
+//	ft_putchar('\n');
+	pthread_mutex_lock(&g_malloc_mutex);
 	if (size <= TINY)
-		return (check_page(size, &g_malloc.tiny, TINY_PAGE));
+	{
+		tmp = check_page(size, &g_malloc.tiny, TINY_PAGE);
+//		show_alloc_mem();
+		pthread_mutex_unlock(&g_malloc_mutex);
+		return (tmp);
+	}
 	else if (size <= SMALL)
 	{
 		tmp = check_page(size, &g_malloc.small, SMALL_PAGE);
-		show_alloc_mem();
+//		show_alloc_mem();
+		pthread_mutex_unlock(&g_malloc_mutex);
 		return (tmp);
 	}
-	size += META;
-	tmp = check_page(size, &g_malloc.large, size);
-//	return (check_page(size, &g_malloc.large, size));
-//	show_alloc_mem();
-	return (tmp);
-}
-
-void		strcopie(char **str, int n, char c)
-{
-	int		i;
-
-	i = 0;
-	while (i < n)
+	else
 	{
-		(*str)[i] = c;
-		i++;
+		t = size + META;
+		while (t % 4096 != 0)
+			t++;
+		tmp = check_page(size, &g_malloc.large, t);
+//		show_alloc_mem();
+		pthread_mutex_unlock(&g_malloc_mutex);
+		return (tmp);
 	}
-	(*str)[i] = '\0';
+	pthread_mutex_unlock(&g_malloc_mutex);
+	return(NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 11:14:41 by hakaishin         #+#    #+#             */
-/*   Updated: 2020/02/13 11:28:21 by liton            ###   ########.fr       */
+/*   Updated: 2020/02/20 16:56:12 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 {
+	t_page			*cpy;
 	t_page			*tmp;
 
 	tmp = *page;
@@ -21,20 +22,42 @@ t_page			*search_alloc(void *ptr, size_t size, t_page **page)
 	{
 		if ((void*)tmp + META == ptr)
 		{
-			if (tmp->block_size - META >= size)
+//			ft_putstr("REALLOC ");
+//			ft_putnbr(tmp->size);
+//			ft_putchar(' ');
+//			ft_putnbr(size);
+//			ft_putchar('\n');
+			if (size > tmp->size || size < tmp->size)
 			{
-				ft_putendl("REALLOC");
-				return (tmp + 1);
-			}
-			else
-			{
-//				ft_memset(tmp + 1, 0, tmp->block_size - META);
-				ft_putstr("REALLOC_MALLOC ");
-				ft_putnbr(tmp->size);
-				ft_putchar('\n');
+				pthread_mutex_unlock(&g_malloc_mutex);
+				if (!(cpy = malloc(size)))
+					return (NULL);
+				if (size > tmp->size)
+					ft_memcpy(cpy, tmp + 1, tmp->size);
+				else
+				{
+					while (size % 16 != 0)
+						size++;
+					ft_memcpy(cpy, tmp + 1, size);
+				}
 				tmp->size = 0;
-				return (malloc(size));
+				return (cpy);	
 			}
+			else if (size == tmp->size)
+				return (ptr);
+			/*
+			if (tmp->block_size - META >= size)
+				return (tmp + 1);
+			else if (tmp->block_size - META < size)
+			{
+				pthread_mutex_unlock(&g_malloc_mutex);
+				if (!(cpy = malloc(size)))
+					return (NULL);	
+				ft_memcpy(cpy, tmp + 1, tmp->size);
+				tmp->size = 0;
+				return (cpy);
+			}
+			*/
 		}
 		tmp = tmp->next;
 	}
@@ -47,20 +70,23 @@ t_page			*get_alloc(void *ptr, size_t size)
 
 	if ((tmp = search_alloc(ptr, size, &g_malloc.tiny)) != NULL)
 		return (tmp);
-	if ((tmp = search_alloc(ptr, size, &g_malloc.small)) != NULL)
+	else if ((tmp = search_alloc(ptr, size, &g_malloc.small)) != NULL)
 		return (tmp);
-	if ((tmp = search_alloc(ptr, size, &g_malloc.large)) != NULL)
+	else if ((tmp = search_alloc(ptr, size, &g_malloc.large)) != NULL)
 		return (tmp);
-	return (ptr);
+	return (NULL);
 }
 
 void			*realloc(void *ptr, size_t size)
 {
-	if (ptr == NULL && size == 0)
-		return (NULL);
-	if (ptr != NULL && size == 0)
-		return (ptr);
+	void		*tmp;
+
 	if (ptr == NULL)
 		return (malloc(size));
-	return (get_alloc(ptr, size));	
+	if (ptr != NULL && size == 0)
+		return (malloc(size));
+	pthread_mutex_lock(&g_malloc_mutex);
+	tmp = get_alloc(ptr, size);
+	pthread_mutex_unlock(&g_malloc_mutex);
+	return (tmp);
 }

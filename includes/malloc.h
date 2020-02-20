@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:55:41 by liton             #+#    #+#             */
-/*   Updated: 2020/02/13 15:08:52 by liton            ###   ########.fr       */
+/*   Updated: 2020/02/19 16:18:50 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include <sys/mman.h>
+# include <pthread.h>
 
 # define META sizeof(t_page)
 # define TINY 254
@@ -23,6 +24,8 @@
 # define SMALL 1524
 # define SMALL_PAGE ((SMALL + META) * 100) + 48
 # define LARGE 4096
+
+extern pthread_mutex_t	g_malloc_mutex;
 
 typedef struct			s_page
 {
