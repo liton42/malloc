@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:56:37 by liton             #+#    #+#             */
-/*   Updated: 2020/02/20 16:55:13 by liton            ###   ########.fr       */
+/*   Updated: 2020/02/25 16:06:13 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ t_page				*check_page(size_t size, t_page **page, size_t type)
 		return (block);
 	if (!*page || size > SMALL || check_place(size, page, type) == 0)
 	{
-//		ft_putendl("NEW_MAPPPPP");
 		if ((ptr = mmap(0, type, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0)) == MAP_FAILED)
 			return (NULL);
 		p = check(page);
@@ -109,34 +108,18 @@ void				*malloc(size_t size)
 		size = 16;
 	while (size % 16 != 0)
 		size++;
-//	ft_putstr("size = ");
-//	ft_putnbr(size);
-//	ft_putchar('\n');
 	pthread_mutex_lock(&g_malloc_mutex);
 	if (size <= TINY)
-	{
 		tmp = check_page(size, &g_malloc.tiny, TINY_PAGE);
-//		show_alloc_mem();
-		pthread_mutex_unlock(&g_malloc_mutex);
-		return (tmp);
-	}
 	else if (size <= SMALL)
-	{
 		tmp = check_page(size, &g_malloc.small, SMALL_PAGE);
-//		show_alloc_mem();
-		pthread_mutex_unlock(&g_malloc_mutex);
-		return (tmp);
-	}
 	else
 	{
 		t = size + META;
 		while (t % 4096 != 0)
 			t++;
 		tmp = check_page(size, &g_malloc.large, t);
-//		show_alloc_mem();
-		pthread_mutex_unlock(&g_malloc_mutex);
-		return (tmp);
 	}
 	pthread_mutex_unlock(&g_malloc_mutex);
-	return(NULL);
+	return(tmp);
 }

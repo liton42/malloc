@@ -6,7 +6,7 @@
 /*   By: liton <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:55:41 by liton             #+#    #+#             */
-/*   Updated: 2020/02/20 17:43:37 by liton            ###   ########.fr       */
+/*   Updated: 2020/02/25 17:19:17 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 # include <pthread.h>
 
 # define META sizeof(t_page)
-# define TINY 254
-# define TINY_PAGE ((TINY + META) * 100) + 72
-# define SMALL 1524
-# define SMALL_PAGE ((SMALL + META) * 100) + 48
-# define LARGE 4096
+# define TINY 2048
+# define TINY_PAGE (((TINY + META) * 100) / getpagesize() + 1) * getpagesize() 
+# define SMALL 120000
+# define SMALL_PAGE ((SMALL + META) * 100) + 2176
 
 extern pthread_mutex_t	g_malloc_mutex;
 

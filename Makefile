@@ -6,20 +6,20 @@
 #    By: zadrien <zadrien@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/02 18:16:06 by zadrien           #+#    #+#              #
-#    Updated: 2020/08/20 11:20:46 by liton            ###   ########.fr        #
+#    Updated: 2020/01/07 15:10:32 by zadrien          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all clean fclean name re
 
-CC = gcc
-SNAME = malloc
+CC= gcc
+SNAME= malloc
 LIBNAME = libft_malloc
-CFLAGS = #-g -Wall -Werror -Wextra
-CPATH = srcs/
-OPATH = obj/
-HPATH = includes/ libft/
-INC = $(addprefix -I , $(HPATH))
+CFLAGS= #-g -Wall -Werror -Wextra
+CPATH= srcs/
+OPATH= obj/
+HPATH= includes/ libft/
+INC= $(addprefix -I , $(HPATH))
 SFILES= calloc.c \
 		free.c \
 		malloc.c \
