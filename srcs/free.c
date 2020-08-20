@@ -6,19 +6,21 @@
 /*   By: hakaishin <liton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 02:18:36 by hakaishin         #+#    #+#             */
-/*   Updated: 2020/01/03 20:41:10 by hakaishin        ###   ########.fr       */
+/*   Updated: 2020/02/20 16:59:09 by liton            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/malloc.h"
 
-int			check_add(void *ptr, t_page *tmp)
+int			check_add(void *ptr, t_page **page)
 {
+	t_page		*tmp;
+
+	tmp = *page;
 	while (tmp)
 	{
-		if ((void*)tmp + META == ptr)
+		if (tmp + 1 == ptr)
 		{
-			ft_memset(tmp + 1, 0, tmp->block_size - META);
 			tmp->size = 0;
 			return (1);
 		}
@@ -33,13 +35,10 @@ void			free(void *ptr)
 
 	if (ptr == NULL)
 		return;
-	tmp = g_malloc.tiny;
-	if (check_add(ptr, tmp))
+	if (check_add(ptr, &g_malloc.tiny))
 		return;
-	tmp = g_malloc.small;
-	if (check_add(ptr, tmp))
+	if (check_add(ptr, &g_malloc.small))
 		return;
-	tmp = g_malloc.large;
-	if (check_add(ptr, tmp))
+	if (check_add(ptr, &g_malloc.large))
 		return;
 }
